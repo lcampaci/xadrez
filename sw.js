@@ -3,7 +3,8 @@ self.addEventListener("install", e => {
     caches.open("snake-cache").then(cache => {
       return cache.addAll([
         "./",
-        "./index.html"
+        "./index.html",
+        "./index2.html",
       ]);
     })
   );
