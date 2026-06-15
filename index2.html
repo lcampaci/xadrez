@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#000080">
+<link rel="apple-touch-icon" href="icon-192.png">    
 <title>Snake PRO+ v96</title>
 <style>
 html, body{
@@ -606,6 +609,11 @@ function handleDirection(key){
 resetGame();
 requestAnimationFrame(loop);
 
+    <script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("./sw.js");
+}
+</script>
 </script>
 </body>
 </html>
