@@ -1,17 +1,24 @@
-self.addEventListener("install", e => {
-  e.waitUntil(
-    caches.open("snake-cache").then(cache => {
-      return cache.addAll([
-        "./",
-        "./index.html",
-        "./index2.html",
-      ]);
-    })
+const CACHE = "snake-pro-v1";
+
+const FILES = [
+  "./",
+  "./index.html",
+  "./index2.html",
+  "./manifest.json",
+  "./icon-192.png",
+  "./icon-512.png"
+];
+
+self.addEventListener("install", event => {
+  event.waitUntil(
+    caches.open(CACHE)
+      .then(cache => cache.addAll(FILES))
   );
 });
 
-self.addEventListener("fetch", e => {
-  e.respondWith(
-    caches.match(e.request).then(res => res || fetch(e.request))
+self.addEventListener("fetch", event => {
+  event.respondWith(
+    caches.match(event.request)
+      .then(response => response || fetch(event.request))
   );
 });
